@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/imranaftab/go-advanced/models"
@@ -20,6 +21,50 @@ func main() {
 	// Utilize a struct defined in a module
 	user := models.Person{Name: "Imran", Age: 28, IsAlive: true}
 	fmt.Println(user)
+
+	// Normal Function with params
+	simpleFunction(1)
+
+	// Normal Function with return
+	isSuccessful := funcMultiParamReturn("Imran Aftab", "Rana", 28)
+	fmt.Println(isSuccessful)
+
+	// Normal function with multiple parameters of same types and multiple return variables
+	isSuccess, value := functWithMutipleReturns()
+	fmt.Println(isSuccess, value)
+
+	// Writeable variable (_) usage with Normal function having multiple parameters of same types and multiple return variables.
+	_, resultValue := functWithMutipleReturns() // Here we use _ (writeable variable), because we plan to use only one return value and ignore the other
+	fmt.Println(resultValue)
+
+	_ = funcReturnNill()
+
+	err := funcReturnError()
+	fmt.Println(err)
+
+}
+
+func funcReturnError() error {
+	return errors.New("Something went wrong")
+}
+
+func funcReturnNill() error {
+	return nil
+}
+
+func functWithMutipleReturns() (bool, int) {
+	return true, 10
+}
+
+func funcMultiParamReturn(firstName, lastName string, age int) bool {
+	fmt.Printf("Name: %s %s \n", firstName, lastName)
+	fmt.Printf("Age: %d\n", age)
+
+	return true
+}
+
+func simpleFunction(count int) {
+	fmt.Println("Simple function", count)
 }
 
 func primitiveTypes() {
