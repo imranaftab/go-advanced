@@ -6,10 +6,14 @@ import (
 	"net/http"
 
 	"github.com/imranaftab/go-advanced/controllers"
+	"github.com/imranaftab/go-advanced/functions"
 	"github.com/imranaftab/go-advanced/models"
 )
 
 func main() {
+
+	// Loops
+	functions.InitLoops()
 
 	// Setup routing for web service
 	controllers.RegisterController()
