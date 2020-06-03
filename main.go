@@ -3,11 +3,19 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net/http"
 
+	"github.com/imranaftab/go-advanced/controllers"
 	"github.com/imranaftab/go-advanced/models"
 )
 
 func main() {
+
+	// Setup routing for web service
+	controllers.RegisterController()
+
+	// Start the webserver to listen and respond to incoming http requests
+	http.ListenAndServe(":1234", nil)
 
 	// Primitive Types
 	primitiveTypes()

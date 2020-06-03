@@ -1,20 +1,21 @@
-package personcontroller
+package controllers
 
 import (
 	"net/http"
 	"regexp"
 )
 
-type personController struct {
+// PersonController Controller to handle request for person data
+type PersonController struct {
 	personIDPattern *regexp.Regexp
 }
 
-func (pc personController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (pc PersonController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello World! Welcome to Go with Imran."))
 }
 
-func newPersonController() *personController {
-	return &personController{
+func newPersonController() *PersonController {
+	return &PersonController{
 		personIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
 	}
 }
